@@ -14,14 +14,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: Set up Python 3.7
+    - name: Set up Python 3.x
       uses: actions/setup-python@v1
       with:
-        python-version: 3.7
+        python-version: 3.x
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install ansible-lint yamllint
+        pip3 install ansible-lint yamllint
     - name: Run ansible-lint
       run: |
         ansible-lint local.yml oem.yml
