@@ -3,10 +3,12 @@ name: JSON lint workflow
 on:
   push:
     paths:
-      - '**.json'
+      - 'packer/*'
+      - '.github/workflows/jsonlint.yml'
   pull_request:
     paths:
-      - '**.json'
+      - 'packer/*'
+      - '.github/workflows/jsonlint.yml'
 jobs:
   Lint:
     name: Run Lint tests
@@ -24,3 +26,10 @@ jobs:
       - name: Run jsonlint
         run: |
           jsonlint packer/*json
+      - name: Fetch and unzip packer nightly
+        run: |
+          wget -o $HOME/packer.zip https://github.com/hashicorp/packer/releases/download/nightly/packer_linux_amd64.zip
+          unzip -d $HOME/packer $HOME/packer.zip
+      - name: Packer validate
+        run: |
+          $HOME/packer/pkg/packer_linux_amd64 validate packer/*json
