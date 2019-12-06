@@ -1,0 +1,26 @@
+---
+name: YAML lint workflow
+on:
+  push:
+    paths:
+      - '**.json'
+  pull_request:
+    paths:
+      - '**.json'
+jobs:
+  Lint:
+    name: Run Lint tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.x
+      - name: Install dependencies
+        run: |
+          pip3 install demjson
+      - name: Run ansible-lint
+        run: |
+          jsonlint packer/*json
