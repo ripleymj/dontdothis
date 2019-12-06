@@ -1,5 +1,5 @@
 ---
-name: YAML lint workflow
+name: JSON lint workflow
 on:
   push:
     paths:
@@ -21,6 +21,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip3 install demjson
-      - name: Run ansible-lint
+      - name: Run jsonlint
         run: |
           jsonlint packer/*json
