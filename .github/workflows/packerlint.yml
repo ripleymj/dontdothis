@@ -1,5 +1,5 @@
 ---
-name: JSON lint workflow
+name: Packer lint workflow
 on:
   push:
     paths:
@@ -28,7 +28,7 @@ jobs:
           jsonlint packer/*json
       - name: Fetch and unzip packer nightly
         run: |
-          wget -O $HOME/packer.zip https://github.com/hashicorp/packer/releases/download/nightly/packer_linux_amd64.zip
+          wget -nv -O $HOME/packer.zip https://github.com/hashicorp/packer/releases/download/nightly/packer_linux_amd64.zip
           unzip -d $HOME/packer $HOME/packer.zip
       - name: Packer validate
         run: |
