@@ -3,9 +3,8 @@ name: Python lint workflow
 on:
   push:
     paths:
-      - '*.py'
-      - '**/*.py'
-      - '*.yml'
+      - '**.py'
+      - '**.yml'
       - 'roles/**/**.yml'
 jobs:
   Lint:
