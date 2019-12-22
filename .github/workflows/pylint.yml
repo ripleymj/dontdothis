@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '*.py'
+      - '**/*.py'
       - '*.yml'
       - 'roles/**/**.yml'
 jobs:
