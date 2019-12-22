@@ -19,7 +19,7 @@ jobs:
           python-version: 3.x
       - name: Install Ubuntu dependencies
         run: |
-          sudo apt install gobject-introspection
+          sudo apt install libgirepository1.0-dev
       - name: Install dependencies
         run: |
           pip3 install -U pyyaml pygobject pylint
